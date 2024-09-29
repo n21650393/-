@@ -1,0 +1,187 @@
+:root {
+  --primary-color: rgba(63, 81, 181, 0.7);
+  --secondary-color: rgba(245, 0, 87, 0.7);
+  --text-color: rgba(255, 255, 255, 0.9);
+  --background-blur: blur(5px);
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+.App {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.background-slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+  z-index: -1;
+}
+
+.background-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  opacity: 0.5;
+}
+
+.background-content {
+  position: relative;
+  z-index: 1;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  min-height: 100vh;
+}
+
+.nav-container {
+  position: static;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 10px 20px;
+}
+
+.nav-link {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1.2em;
+  margin: 0 15px;
+  transition: all 0.3s ease;
+  position: relative;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--secondary-color);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.selected::after {
+  width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.selected {
+  color: var(--secondary-color);
+  transform: translateY(-3px);
+}
+
+.nav-link.home-link {
+  cursor: default;
+  pointer-events: none;
+}
+
+.nav-link.home-link:hover {
+  color: var(--text-color);
+  transform: none;
+}
+
+.nav-link.home-link::after {
+  width: 100%;
+  background-color: var(--text-color);
+}
+
+.experience-bar-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 1000; /* 確保它在其他元素之上 */
+}
+
+.level-info {
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.experience-bar {
+  background-color: rgba(255, 255, 255, 0.2);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.experience-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transition: width 0.5s ease-out;
+}
+
+.experience-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.social-links {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}
+
+.social-links a {
+  color: var(--text-color);
+  font-size: 32px; /* 增大圖示尺寸 */
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--secondary-color);
+  transform: scale(1.2);
+}
+
+/* ... 其他樣式保持不變 ... */
